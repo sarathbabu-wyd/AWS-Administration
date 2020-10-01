@@ -43,7 +43,7 @@
 2. Availability Zones(AZ)-Each regions have min 2 to max 6 availability Zones.AWS maintains 77 availability Zones around the world.Each AZ can be multiple data centres and at full scale have thousands of servers.AZs are seprated from one another by many km.
 >>Data centres are key to AWS infrastucture need to protect from manmade and natural risks.It has four layers PERIMETER LAYER(security gurds,fencing), INFRASTUCTURE LAYER(backup,HVAC,fire safety), DATA lAYER(area holds customer data,authorised person have only access), ENVIRONMENTAL LAYER(site selection depends on flood ,weather)
 
-3. Local Zones -its aws new deployment place near large poplation,industry and IT centres.Its an Extension of AWS region ,and can run services a)Amazon Elsatic Compute Cloud, b)Amazon Virtual private cloud. c)Amazon elastic Block store, d)Amazon File storage, e)Amazon Elastic Load Balancing
+3. Local Zones -its aws new deployment place near large poplation,industry and IT centres.Its an Extension of AWS region ,and can run services a)Amazon Elastic Compute Cloud, b)Amazon Virtual private cloud. c)Amazon elastic Block store, d)Amazon File storage, e)Amazon Elastic Load Balancing
 
 4. Point of Presence(PoP)-Amazon has 216 Points of presence in 84 cities .Deliver customer content through worldwide network of PoP, consists of Edge locations and Regional Edge cache servers. Amazon Cloudfront is a fast Content Delivery Network (CDN) thar securely delivers data, videos ,application with high transfer speed.
 
@@ -89,3 +89,49 @@
 * Bootstrap script(configure at first launch):EC2 User    data 
 
 ![CLOUD_PRACTITIONER](EC2_instant_types.png)
+
+## SECURITY GROUPS
+
+ * Security Groups are fundamentals of network security in AWS
+ * They control how traffic is allowed into or out of our EC2 instances.
+ * Security groups only contain allow rules
+ * Security groups rules can reference by IP or by security group
+
+### SECURITY GROUPS -DEEPER DRIVE
+
+* Security groups are acting as a "Firewall" on EC2 instances
+* They regulate
+  >> Access to Ports
+  >> Authorised IP ranges -IPv4 and IPv6
+  >> Contol of inbound network
+  >> Control of outbound network
+
+## CLASSIC PORTS
+
+* 22 = SSH (Secure Shell)-login into linux instance
+* 21 = FTP (File Transport Protocol)
+* 22 = SFTP (Secure File Transport Protocol)
+* 80 = HTTP -access unsecured websites
+* 443 = HTTPS -access secured websites
+* 3389 = RDP (Remote Desktop Protocol)-log into a Windows instance 
+
+## EC2 INSTANCE PURCHASING OPTIONS
+
+* ON-DEMAND INSTANCES(pay for what you use,has highest cost but no upfront payment,no long term commitment)
+
+* RESERVED INSTANCES-(Minimum 1 year,75% discount as compared to on-demand,)
+ >> purchasing options:no upfront=no discount,partial upfront=+ discount,all upfront=++ discount
+ >> reserve a specific instance type
+ 1.convertible reserved instances(can change EC2 type,up to 54% of discount)
+ 2.scheduled reserved instances(commitment for 1-3 years,require a fraction of day/week/month, EG:every thursday between 3 and 6 pm)
+
+* EC2 SPOT INSTANCES-90% discount as compared to on-demand,can lose at any time if your max price is less than current spot price,the most cost-efficient
+
+* EC2 DEDICATED HOSTS-
+ >>An amazon EC2 dedicated host is a physical server with EC2 instance fully dedicated to you use.
+ >>Allocated for your account for a 3 year period reservation
+ >> More expensive
+ >> for companies that have strong regulatory or compliance needs.  
+
+![CLOUD_PRACTITIONER](purchse-options_sample.png)
+![CLOUD_PRACTITIONER](Shared_respo_EC2model.png)
