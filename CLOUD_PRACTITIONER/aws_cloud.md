@@ -135,3 +135,95 @@
 
 ![CLOUD_PRACTITIONER](purchse-options_sample.png)
 ![CLOUD_PRACTITIONER](Shared_respo_EC2model.png)
+
+## EC2 STORAGE -EBS(ELASTIC BLOCK STORE)
+
+* An EBS Volume is a network drive you can attach to your instances while they run.
+* They can be mounted to one instance at a time.
+* They are bound to a specific availability zone.
+* Analogy:Think them as "network USB" stick
+* Free tier: 30GB of free EBS stoarge of type gp2 per month
+* EBS volume-
+  >>it uses network to communicate,might be a bit of latency
+  >>it can be detached from EC2 instance and attached to another one quickly.
+  >>An EBS volume in us-east-1a cannot be attached to us-east-1b
+  >>to move volume across you first need to snapshot it.
+  >>You can increase the capacity of the drive over time
+  >>you get billed for all provisional capacity(size in GBs and IOPS-input output operations per second)
+### We cannot attach an EBS volume to two EC2 instances but possible us to attach two EBS volumes to one instances.
+
+### EBS SNAPSHOTS
+
+* Make a backup (snapshot) of your EBS volume at a point in time
+* Not necessary to detach volume to do snapshot,but recommended
+* Can copy snap shot across AZ or Regions
+
+## AMI -AMAZON MACHINE IMAGE
+
+1. AMI are customization of an EC2 instance
+  >>you add you own software ,configuration,operating system ,monitoring..
+  >>Faster boot/configuration time because all your software is pre-packaged
+2. AMI are built for a specific region and can be copied across regions.
+3. You can launch EC2 instances from :
+   >>A public AMI -AWS provided
+   >>Your owm AMi -You make and maintain them youself
+   >>An AWS Marketplace AMI:an AMI someone else made   
+
+## EC2 INSTANCE STORE
+
+* EBS volumes are network drives with good but limited performance
+* If you need a high-performance hardware disk,Use EC2 instance store
+* Better I/O performance
+* EC2 instance store lose their data if they are stopped
+* Risk of data loss if hardware fails. 
+
+## EFS-ELASTIC FILE SYSTEM
+
+ * Managed NFS(network file system) that can be mounted on 100s of EC2
+ * EFS works with Linux EC2 instances in multi AZ
+ * Highly available,scalable,expensive(3xgp2),per pay use.
+
+ ![CLOUD_PRACTITIONER](EBS_vs_EFS.png)
+ ![CLOUD_PRACTITIONER](Sharedrespo_EC2_storage.png)
+
+ ## ELB & ASG(ELASTIC LOAD BALANCING & AUTO SCALING GROUP)
+
+ ### SCALABILITY AND HIGH AVAILABILITY
+   * Scalability means that an application / system can handle greater loads by adapting.
+   * There are two kinds scalability
+     >>Vertical scalability-Increase instance size(=scale up/ down).From:t2.nano-0.5G of RAM,1 vcpus --TO : u-12tbl.metal-12.3TB of RAM,448 vCPUs
+     >>Horizontal scalability(=elasticity)-Increase number of instances (=scale out/in).it consists of
+       1.Auto Scaling Group
+       2.Load Balancer
+
+    * High availability means running application /system in at least 2 Availability Zones. 
+     >>it goes hand in hand with horizontal scaling. 
+     >>The goal is to survive data center loss(disaster)
+     ELASTICITY-In scalable system elasticity means that there will be some "auto -scaling" so that the system can scale based on the load.This is "cloud-friendly":pay-per-use,match demand,optimize costs.
+
+  ### ELB
+     * Load balancers are servers that forward internet traffic to multiple server to multiple servers(EC2 instances)
+     * Expose single point of access(DNS) to your application
+     * Provide HTTPS for your websites
+     * High availability zones
+     * An ELB ia a managed load balancer
+       1. AWS guarantees that it will be working.    
+       2. AWS takes cares of upgrades,maintenance,high availability
+       3. AWS provides only a few configuration knobs.
+     * Its costs less but high effort on maintenance
+     * 3 kinds of Load Balancer offered by AWS:
+       1. Application Load Balancer(HTTP/HTTPS only)-Layer 7
+       2. Network load Balnacer(ultra high performance,allows TCP)-Layer 4
+       3. Classic Load Balancer-layer 4 & 7 
+
+
+   ### AUTO SCALING GROUP
+      * In real-life the cloud on your websites and application vcan change
+      * The Goal of ASG is:
+        1. Scale out(add EC2 instances) to match an increased load
+        2. Scale in(remove EC2 instances) to match decreases load
+        3. Ensure we have minimum and maximum number of machines running.
+        4. Automatically register new instances to a load balancer.
+        5. Replace unhealthy instances
+      * Cost saving : only run at optimal capacity  
+
