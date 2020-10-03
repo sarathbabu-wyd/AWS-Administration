@@ -186,9 +186,10 @@
  ![CLOUD_PRACTITIONER](EBS_vs_EFS.png)
  ![CLOUD_PRACTITIONER](Sharedrespo_EC2_storage.png)
 
- ## ELB & ASG(ELASTIC LOAD BALANCING & AUTO SCALING GROUP)
+## ELB & ASG(ELASTIC LOAD BALANCING & AUTO SCALING GROUP)
 
- ### SCALABILITY AND HIGH AVAILABILITY
+### SCALABILITY AND HIGH AVAILABILITY
+
    * Scalability means that an application / system can handle greater loads by adapting.
    * There are two kinds scalability
      >>Vertical scalability-Increase instance size(=scale up/ down).From:t2.nano-0.5G of RAM,1 vcpus --TO : u-12tbl.metal-12.3TB of RAM,448 vCPUs
@@ -202,6 +203,7 @@
      ELASTICITY-In scalable system elasticity means that there will be some "auto -scaling" so that the system can scale based on the load.This is "cloud-friendly":pay-per-use,match demand,optimize costs.
 
   ### ELB
+
      * Load balancers are servers that forward internet traffic to multiple server to multiple servers(EC2 instances)
      * Expose single point of access(DNS) to your application
      * Provide HTTPS for your websites
@@ -218,6 +220,7 @@
 
 
    ### AUTO SCALING GROUP
+
       * In real-life the cloud on your websites and application vcan change
       * The Goal of ASG is:
         1. Scale out(add EC2 instances) to match an increased load
@@ -227,3 +230,47 @@
         5. Replace unhealthy instances
       * Cost saving : only run at optimal capacity  
 
+# AMAZON S3
+
+ * Amazon S3 is one of the main building blocks AWS
+ * Its advertised as "infinitely scaling storage"
+ * Many websites use Amazon S3 as backbone
+ * USES-Backup and storage,Disaster Recovery,Hybrid Cloud storage,Media Hosting,static website, Media Hosting
+
+## BUCKETS
+
+* S3 allows people to store objects(files) in buckets(directories)
+* Buckets must have globally unique name(across all regions all accounts)
+* S3 looks like a global service but buckets are created in a region
+* Naming convention
+ >> No uppercase
+ >> No underscore
+ >> 3-63 characters long
+ >> Not an IP
+ >> Must start with lowercase letter or number
+* Max Object Size is 5TB(5000GB)
+* More than 5GB ,must use "multi part upload"
+
+## S3 SECURITY-BUCKET POLICY
+
+* USER BASED-IAM policies are attached to IAM user to access into S3 buckets.
+* RESOURCE BASED-Bucket policy,rule attached directly to the S3 buckets to allow or deny requests coming from other accounts or public requests.
+* Encryption-Encrpt using encryption keys.
+
+## S3 WEBSITES
+
+* S3 can host static websites and have them accessible on the wwww
+* Website URL will be .<bucket-name>.s3-website-AWS-region>.amazonaws.com(if you are in another region only change is that instead of dash there is a dot followed by websitee
+* If you get 403(Forbidden) error,make sure the bucket policy allow public reads
+
+## S3 VERSIONING
+ 
+* You can version your files in Amazon S3.If we need to replace the files,update it,then it would be good to keep previous versioning of your files in amazon S3.
+* It is enabled at the bucket level
+* Same key overwrite will increment the "version":123....
+* It is best practice to version your bucket
+* S3 has ability to restore a deleted file
+
+## S3 ACCESS LOG
+
+* If you enable permissions to access log Any request that made to your S3 buckets from any account authorized or denied will be logged.      
