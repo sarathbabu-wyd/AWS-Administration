@@ -273,4 +273,67 @@
 
 ## S3 ACCESS LOG
 
-* If you enable permissions to access log Any request that made to your S3 buckets from any account authorized or denied will be logged.      
+* If you enable permissions to access log Any request that made to your S3 buckets from any account authorized or denied will be logged.Create a new bucket and enable access log in  properties for the parent one.Target bucket shoulb be new one.
+
+## S3 REPLICATION
+
+* Must create a replica bucket in another region
+* Must enable Versioning in source and destination.
+* CROSS REGION REPLICATION (CRR)
+* SAME REGION REPICATION (SRR)
+* 
+## STORAGE CLASSES
+
+* Amazon S3 Standard-General Purpose
+* Amazon S3 standard-Infrequent Access(IA)
+* Amazon S3 One-Zone-Infrequent Access
+* Amazon S3 intelligent tiering
+* Amazon Glacier
+* Amazon Glacier Deep Archive
+* Amazon S3 Reduced Redundancy Storage
+
+## S3 DURABILITY AND AVAIALABILITY
+
+* High durability(99.999999%) of object across multiple AZ
+* If you store 1 crore objects with Amazon S3, you can average expect to incur a loss of a single object once every 10000 years.
+* Same for all storage classes.
+* AVAILABILITY:Measures how readily available a service is
+* S3 standard has 99.99% availability,which means it will not be avaialable 53 minutes a year.
+* varies depending on storage class
+
+## SNOWBALL
+
+* Physical data transport solution that helps moving TBs or PBs of data in or out of AWS
+* Pay per data transfer job
+* Used when large data cloud migrations,DC decommission,disaster recovery.
+
+### SNOWBELL PROCESS
+
+1. Request AWS console to deliver a Snowbell device.
+2. Install the snowbell client on your server
+3. shipback device to the AWS using right aws facility
+4. Data will be loaded to S3 bucket from snowball device by amazon using import/export facility.
+5. Snowball is completely wiped.
+6. TYPES-SNOWBALL EDGE
+  >> 100TB capacity
+  >> We can add EC2 AMI to add computations to the data or processing to the data.
+  >> Its very useful to pre-process the data while moving before it gets to S3.
+
+### AWS STORAGE CLOUD OPTIONS
+
+1. BLOCK
+>>Amazon EBs
+>>EC2 Instance Store
+2. FILE
+>>Amazon EFS
+3. OBJECT
+>>Amazon S3
+>>Glacier
+
+### AWS STORAGE GATEWAY
+
+* Bridge whatever happen on-permises to AWS cloud.
+* Hybrid storage service will allow on-permises system to use cloud to extend storage capability.
+* It can be used for disaster recovery,backup and restore.
+* Three types of storage gateway.Fileway Gateway,Volume Gateway and tape gateway.
+* Storage Gateway will using Amazon EBS,Amazon S3, and Glacier(Bridge your file systems and your storage on premises into cloud)
