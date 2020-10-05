@@ -337,3 +337,81 @@
 * It can be used for disaster recovery,backup and restore.
 * Three types of storage gateway.Fileway Gateway,Volume Gateway and tape gateway.
 * Storage Gateway will using Amazon EBS,Amazon S3, and Glacier(Bridge your file systems and your storage on premises into cloud)
+
+
+# DATABASES AND ANALYTICS
+ 
+* If you are storing data on disk,would be on EBS drive,an EBS volume,an EC2 instance store,Amazon S3 you have limits.if you need to store data in structure way use Database.
+* Structure will allow you to build indexes, we can do per files operations.
+* Database are optimized for a purpose and come with different features,shapes and constraints.
+
+## RELATIONAL DATABASE SERVICE (RDS)
+
+* Its managed DB(database) use SQL as a query lanuguage.
+* Its allows you to create databases in cloud that are managed by AWS.
+  1.Postgres
+  2.MySQL
+  3.MariaDB
+  4.Oracle
+  5.Microsoft SQL Server
+  6.Aurora(AWS Proprietary database)
+
+### ADVANTAGES OF RDS
+
+* RDS is a managed database service,provisioning is Automatic and patching of OS os done by AWS
+* Continuous backup and restore options (Point in Time restore)
+* Can monitor dasboards to see database is doing good.
+* Multi AZ setup for DR(Disaster Recovery)
+
+### RDS SOLUTION ARCHITECTURE
+
+* ELASTIC LOAD BALANCER(will take web request)-----EC2 instances(do application logic)-------AMAZON RDS(SQL,relational database)
+
+### AMAZON AURORA
+
+* It Supports PostgreSQL and MySQL 
+* Its a AWS cloud optimized claims 5x performance improvement over MySQL on RDS and over 3x performance of postgres on RDS.
+* Aurora storage automatically grows increment of 10GB up to 64 TB
+* Aurora costs more than RDS(20% more)-but is more efficient.but it is not free tier.
+
+## AMAZON ELASTICACHE
+
+* Elasticache is to get managed by redis or memacached
+* Its a memory database with high performance and low latency.
+* AWS takes cares of OS maintenance / patching,optimizations,setup,configuration,monitoring,failure recovery and backups
+
+## DYNAMODB 
+
+* Its called serverless database.But there are servers in the backend.
+* Its fully managed,highly available database with replication across 3 AZ.
+* Its part of a noSQL database-not a relational database 
+* DynamoDB is one of the Flagship product of AWS.
+* Its great because it scales to millions of request per second ,trillions of rows and hundreds terebytes of storage.
+* It has single-digit millisecond latency.
+* Key/Value database and have primary key made of one or two column,partition key and sort key.In righthand side you can define your own columns of data.Finaly items going to row by row to the dynamotable
+
+## REDSHIFT
+
+* Based on PostgreSQL and its OLAP(online analytical processing)
+* Load data every hour not every second.10x better performance than other data warehouses)
+* Data is stored in columns and has an MASSIVELY PARALLEL QUERY EXECUTION (MBP engine) 
+* Integarated with Business intelligence(BI) tools such as Quicksight or Tableau
+
+## AMAZON EMR(ELASTIC MAP REDUCE)
+
+* EMR is actually not a Database.Its to create what is called a Hadoop Cluster when you want to analyze a BIG DATA on AWS and process vast amount of data.
+* Hadoop is a open source Technology that allows multiple servers to work with in a cluster.
+* Hadoop Cluster is made of hundreds of EC2 instances.In Hadoop ecosystem you will see projects like Apache Spark,Hbase,Presto and Flink
+
+## ATHENA 
+
+* Serverless database to Perform Queries.
+* Fully serverless database with SQL capabilities and its used only for query data in Amazon S3
+* You dont want to pay for database but pay for every Query you run and results are going back to Amazon S3.
+* DATA BASE MIGRATION SERVICE(DMS)-Quikly and securely migrate database to AWS.The source database is available during migration.
+
+## AWS GLUE
+
+* Its a managed extract,transform and load service(ETL).
+* We use ETl service to prepare and tranform data.
+* Glue ETL sits in the middle,and say we wanted to extract data from both S3 Bucket and an Amazon RDS database.So, for this, we'd use Glue to extract the data from both these sources, and then,once the data is extracted, it is in a Glue service,and we would write a script to do a transform part.So here, Glue would help us transform the data,and then, once it's transformed,we need to actually analyze it so we can load up that data into, for example, an Amazon Redshift database,where we can do our analytics the right way.And so, Glue sits here, okay?It's a very powerful tool, because you can do any kindof instruction transformationand then you can load it into many different places.
