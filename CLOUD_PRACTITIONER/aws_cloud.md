@@ -307,7 +307,7 @@
 * Pay per data transfer job
 * Used when large data cloud migrations,DC decommission,disaster recovery.
 
-### SNOWBELL PROCESS
+### SNOWBALL PROCESS
 
 1. Request AWS console to deliver a Snowbell device.
 2. Install the snowbell client on your server
@@ -341,7 +341,7 @@
 
 # DATABASES AND ANALYTICS
  
-* If you are storing data on disk,would be on EBS drive,an EBS volume,an EC2 instance store,Amazon S3 you have limits.if you need to store data in structure way use Database.
+* If you are storing data on disk,would be on EBS drive,an EBS volume,an EC2 instance store,Amazon S3 you have limits.If you need to store data in structure way we use Database.
 * Structure will allow you to build indexes, we can do per files operations.
 * Database are optimized for a purpose and come with different features,shapes and constraints.
 
@@ -358,7 +358,7 @@
 
 ### ADVANTAGES OF RDS
 
-* RDS is a managed database service,provisioning is Automatic and patching of OS os done by AWS
+* RDS is a managed database service,provisioning is Automatic and patching of OS done by AWS
 * Continuous backup and restore options (Point in Time restore)
 * Can monitor dasboards to see database is doing good.
 * Multi AZ setup for DR(Disaster Recovery)
@@ -415,3 +415,45 @@
 * Its a managed extract,transform and load service(ETL).
 * We use ETl service to prepare and tranform data.
 * Glue ETL sits in the middle,and say we wanted to extract data from both S3 Bucket and an Amazon RDS database.So, for this, we'd use Glue to extract the data from both these sources, and then,once the data is extracted, it is in a Glue service,and we would write a script to do a transform part.So here, Glue would help us transform the data,and then, once it's transformed,we need to actually analyze it so we can load up that data into, for example, an Amazon Redshift database,where we can do our analytics the right way.And so, Glue sits here, okay?It's a very powerful tool, because you can do any kindof instruction transformationand then you can load it into many different places.
+
+# COMPUTE SERVICES(ECS,LAMBDA ,BATCH ,LIGHTSAIL) 
+
+## DOCKER
+
+* Docker is a software development platform to deploy apps bu packaging into something called containers.
+* Container is very special because it can run on any operating system,any programming language and any technology.
+* we can use Amazon ECR which is a private docker repository were you can run a private docker repository.
+* In docker we have infrastructure the host OS which is a EC2 instances and then DOCKER.
+
+## ECS (ELASTIC CONTAINER SERVICE)
+
+* Launch containers on AWS
+* Its used for running docker containers.Before ECS we need to create EC2 instances
+* You must provision and maintain the infrastructure yourself.AWS will take care of starting/stopping containers.
+* DOCKER CONTAINER ON AWS ---ECS
+
+## FARGATE
+
+* Fargate is used to run docker containers on AWS
+* No need to provision infrastructure(no need to create any EC2 instances).
+* Serverless offering.We dont manage servers
+* AWS will run containers based on specification of RAM and CPU for each container
+
+## ECR (ELASTIC CONTAINER REGISTERY)
+
+* Application is to run Docker images
+* Private Docker registery on AWS
+* This is were you store your Docker images so they can run by ECS or FARGATE
+
+## AWS LAMBDA
+
+* Lambda have only virtual functions only,no servers.
+* Limited by Time-Whenever we need a function it will be run and we dont need a function it will not be run and we will not be billed.
+* Scaling Automated.
+* Pay per Request and compute time.free tier upto 1 million AWS lambda requests and 4 lakhs GBs of compute time
+* Supports all programming language
+* Integrated with the whole AWS suite of service
+* Easy monitoring through AWS CloudWatch
+* Docker is not AWS Lambda.its means ECS and FARGATE
+* AWS lambda function will trigger an image from S3 and creates a thumpnail and push it back to S3 or push metatdata in DynamoDB
+* Another use is to create serverless CRONJOB
