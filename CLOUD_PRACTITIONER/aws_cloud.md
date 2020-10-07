@@ -420,7 +420,7 @@
 
 ## DOCKER
 
-* Docker is a software development platform to deploy apps bu packaging into something called containers.
+* Docker is a software development platform to deploy apps by packaging into something called containers.
 * Container is very special because it can run on any operating system,any programming language and any technology.
 * we can use Amazon ECR which is a private docker repository were you can run a private docker repository.
 * In docker we have infrastructure the host OS which is a EC2 instances and then DOCKER.
@@ -457,3 +457,18 @@
 * Docker is not AWS Lambda.its means ECS and FARGATE
 * AWS lambda function will trigger an image from S3 and creates a thumpnail and push it back to S3 or push metatdata in DynamoDB
 * Another use is to create serverless CRONJOB
+
+## AWS BATCH
+
+* Companies which needs to run thousands of jobs but would like to NOT manage the computer resource will use batch.
+* It doesnot have time limit because it relies on EC2 instance.
+* Rely on EBS/instance store for Disk Space.
+* Helpful for Cost optimization focus less on Infrastructure.
+
+## LIGHTSAIL
+
+* With lightsail you can get servers,storage ,databases and networking on one place.
+* If you're someone with little to no cloud experience then Lightsail may be a service for you.
+* Low and Predictable pricing
+* Simpler alternative to using EC2,RDS,ELB,EBS
+* USE CASES:simple web application,Websites,
