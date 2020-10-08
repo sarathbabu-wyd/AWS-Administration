@@ -472,3 +472,78 @@
 * Low and Predictable pricing
 * Simpler alternative to using EC2,RDS,ELB,EBS
 * USE CASES:simple web application,Websites,
+
+# DEPLOYMENTS
+
+## CLOUD FORMATION(It will works only in Us virgina region)
+
+* Cloud formation is a declarative way of outlining your AWS Infrastructure as a Code.
+* Eg:If you say i want security group, I want EC2 instances that will using a security group, I want an S3 bucket, I want a load balancer.The cloud formation will automatically create all the things in right order.
+* You can estimate the cost of your resources using CloudFormation template.
+* Ability to destroy and re-create an infrastucture on the cloud on the fly.
+* Automated generation of diagram for your templates.
+
+##  ELASTIC BEANSTALK
+
+* Elastic beanstalk is a developer centric view of deploying an application on AWS 
+* It uses all components,EC2,ASG,ELB,RDS.But its all in one view that's easy to make sense of.
+* We have full control over all configuration bit its within beanstalk.
+* PLATFORM AS A SERVICE(Paas)
+
+## AWS CODEDEPLOY
+
+* Its a HYBRID service because its work with On-Premises and for EC2 instances.
+* It deploys application automatically
+* Codedeploy allows you to upgrade servers on-permises from Version 1 to Version 2
+
+## AWS SYSTEM MANAGER(SSM)
+
+* Hybrid service
+* You can get operational insights about the state of infrastructure.
+* Important feature is that you can get Automotive patching of all your servers and instances.
+
+## AWS OPSWORKS
+
+* CHEF AND PUPPET are two tools that are not created by AWS and these tools help you to perform  server configuration automatically.
+
+ ![CLOUD_PRACTITIONER](Opsworks.png)
+ 
+
+# GLOBAL  INFRASTRUCTURE
+
+* A global application is an application deployed in multiple regions.
+* On AWS  this could be Regions or Edge locations
+* DECREASED LATENCY:It take more time for a packet from asia to reach US.Deploy your application closer to your user decrease latency.
+* DISASTER RECOVERY:If an AWS regions goes down (earthquake,storms,power shutdown).You can fail over to another region an application is still working
+* ATTACK PROTECTION FROM HACKERS:If you have application across multiple regions and distributed globally its much harder for a attacker  to attack all this locations.
+* POINT OF PRESENCE also called us EDGE LOCATIONS
+
+## AMAZON ROUTE 53
+
+* Route 53 is a managed DNS(Domain Name System)
+* DNS-Its a collection of rules and records which help clients to find right servers through URLs
+
+ 1. Mapping www.google.com to an IPv4 its called A RECORD
+ 2. Mapping www.google.com to an IPv6 its called QUADRUPLE A RECORD
+ 3. Mapping a hostname to another hostname  its called CNAME
+ 4. Mapping a hostname to AWS Resource its calles ALIAS RECORD
+
+ ### ROUTING POLICIES
+
+ 1. SIMPLE ROUTING POLICY- No healthchecks,Our browser will go into our DNS system does a DNS query and get IPv4 for as result.
+ 2. WEIGHTED ROUTING POLICY-Allows to distribute traffic across multiple instances,we assign weight to instances Eg:70,20,10 means 70% traffic to first one ,20% traffic to next one,10% traffic to third one.We have Health checks.
+ 3. LATENCY ROUTING POLICY- If user is located in America they wiil be redirected to talk a server near America and user is in australia and will be redirected to talk to Australian server.
+ 4. FAILOVER ROUTING POLICY: Our DNS system will do Health check on primary and if primary fails will be redirected to the Failovers.
+
+ ## AWS CLOUDFRONT
+
+ * Cloudfront is a  CONTENT DELIVERY NETWORK(CDN)
+ * IT improves read performance by caching the content of your website at different edge locations.
+ * Cloudfront is made of 216 Pop Globally
+ * DDos protection(Its a kind of attack where all your servers around world are attacked at the same time )
+ * So using CloudFront,content of our S3 bucket in one region can be distributed all around the world through the edge locations or Points of Presence.
+
+ ## CLOUDFRONT vs S3 REPLICATION
+
+ * Cloudfront will use Global Edge Network,about 216 point of presence files are cached in Edge locations may be available all around world.
+ * Whereas S3 Cross Region Replication is to really replicate an entire bucket into another region.
