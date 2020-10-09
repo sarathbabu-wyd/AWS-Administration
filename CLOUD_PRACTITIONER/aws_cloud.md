@@ -547,3 +547,14 @@
 
  * Cloudfront will use Global Edge Network,about 216 point of presence files are cached in Edge locations may be available all around world.
  * Whereas S3 Cross Region Replication is to really replicate an entire bucket into another region.
+
+ ## AWS GLOBAL ACCELERATOR
+
+* Global accelerator is an AWS global network to make your requests go faster and go through the internal AWSnetwork Globally.
+* Eg;If you need to tranfer S3 bucket globally we use S3 TRANSFER ACCELERATOR.If yo need to transfer afile from USA to Australia Our file is being uploaded from the United State and transfer to a bucket in Australia.And so what we'll do is we'll upload the file into a edge location very close to a user in the USA and then using the internal network,the edge location will transfer the file to the S3 Buckets in Australia and is more reliable and fast connection.
+
+# CLOUD INTEGRATIONS
+
+* When we have multiple applications at some point they will have to communicate with one another.There are two types of communication pattern-
+
+1. Synchronous communication
