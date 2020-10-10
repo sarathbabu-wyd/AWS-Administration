@@ -557,4 +557,103 @@
 
 * When we have multiple applications at some point they will have to communicate with one another.There are two types of communication pattern-
 
-1. Synchronous communication
+1. Synchronous communication(application to application Eg:Buying Service To shipping service)
+2. Asynchonous/ Event based(Eg;Buying Service-Queue-Shipping Service)
+
+## AMAZON SQS(SIMPLE QUEUE SERVICE)
+
+* It allows to decouple the Application.Its fully managed and its a serverless service
+* Scales from 1 message per second to 10,000s per second
+* Default retention of messages upto 4 days.
+* Messages are deleted after they read by Consumers.
+* SQS Queue is also called Fan-out-pattern
+## AMAZON SNS (SIMPLE NOTIFICATION SERVICE)
+
+* Notification Service AWS
+* Pub/Sub integration which has an SNS topic.
+* Event publishers" will send messages to one SNS topic And you can have as many "event subscribers who want to listen to the SNS topic notifications.Each subscriber will receive messages
+* No message Retention
+
+# CLOUD MONITORING
+
+## CLOUD WATCH METRICES AND CLOUD ALARM
+
+* CloudWatch provides metrics for every services in AWS
+* Metric is a Variable to Monitor(CPUUtilization)
+* Metrics have timestamps
+* you can create CloudWatch dashboard of metrics
+
+## CLOUDWATCH ALARMS
+
+* Alarms are used to Trigger notification that means once a metric goes above threshhold then we can have a CloudWatch Alarm action
+* Alarm actions-
+1. Auto scaling(increase or decrease Ec2 instances)
+2. EC2 Actions: stop,terminate,reboot or recover EC2 instances
+3. Billing Alarm
+
+## CLOUDWATCH LOGS
+
+* Using cloudwatch logs we can collect log files from
+ >>Elastic Beanstalk
+ >>ECS
+ >>AWS Lambda
+ >>CloudTrail
+ >>CloudWatch loGs agents
+ >>Route53
+
+### CLOUDWATCH LOGS FOR EC2 INSTANCES
+
+In case of EC2 instanses will not send any log files to cloudwatch logs .For this you need to create CloudWatchLog Agent on your EC2 instances and they will push the Log files that you want to CloudWatch Log service
+
+## CLOUDWATCH EVENTS/EVENTBRIDGE
+
+* Its a way of react to events happening within AWS.Creating a Rule that Triggers on an Event
+* You can configure the following AWS services as targets for CloudWatch Events:
+  >> Amazon EC2 instances
+  >> AWS Lambda functions
+  >>Amazon SNS topics
+  >>Amazon SQS queues
+  
+## AWS CLOUDTRAIL
+
+* Provides governance,compliance and audit for your account.Its enabled by Default
+* Can get history of events/API calls made with AWS account
+* Can put logs from Cloudtrail into Cloudwatch logs or S3
+
+## AWS X-RAY
+
+* Debugging Production.Using AWS X-RAY we are able to trace and get visual analysis of your application
+* Troubleshooting performance
+
+## SERVICE HEALTH DASHBOARD
+
+* Show all regions and all services.
+* It will show you as well historical information of each day,can see the current status as of today in each region,the sevices are working or not.
+
+## PERSONAL HEALTH DASHBOARD
+
+* It will gave you alerts and remedial guidance of our AWS service.
+* It gaves you personalized view into the performance availability of the AWS service
+
+# VPC AND NETWORKING
+
+## VPC,SUBNET,INTERNET GATEWAY AND NAT GATEWAYS
+
+* VPC-VIRTUAL PRIVATE CLOUD-Its private network to deploy your resources.Eg:Ec2 instances a VPC is linked to a specific regions in AWS and you have multiple VPC.
+* SUBNET- It allows you to partition your network inside your VPC
+* PUBLIC SUBNET- is a subnet that is accessible from the internet.
+* PRIVATE SUBNET-private subnet is a subnet that is not accessible from the internet.
+* To access internet between subnets use Route Tables
+
+### INTERNET GATEWAY AND NAT GATEWAYS
+
+>> Internet Gateway helps our VPC instances connect with the internet.Public subnet have a route to internet gateway
+>> NAT Gateways(AWS-MANAGED) and NAT instances(self-managed) allow your instances in your private subnets to access the internet while remaiing private.
+
+## NETWORK ACL AND SECURITY GROUP(SECURITY GROUP-EC2 INSTANCE LEVEL,NETWORK ACL-SUBNET LEVEL)
+
+* First line defense for our EC2 instance, is a NACL or network ACL, which is a Firewall that is controlling trafic from and to the Subnets
+>>It can allow and Deny Rules
+>>Rules only include IP address
+* The Second line of Defence are Security Groups, and is a Firewall controls Traffic from to and from ENI(Elastic Network Interface)
+>>It can only allow rules
