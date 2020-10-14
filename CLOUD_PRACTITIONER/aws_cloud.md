@@ -86,7 +86,7 @@
   >> hardware (EC2 Instance Store)
 * Network card:speed of the card,Public IP address
 * Firewall rules:security group
-* Bootstrap script(configure at first launch):EC2 User    data 
+* Bootstrap script(configure at first launch):EC2 User data 
 
 ![CLOUD_PRACTITIONER](EC2_instant_types.png)
 
@@ -614,7 +614,7 @@ In case of EC2 instanses will not send any log files to cloudwatch logs .For thi
   >>Amazon SNS topics
   >>Amazon SQS queues
   
-## AWS CLOUDTRAIL
+## AWS CLOUDTRAIL(To Record API Calls Within Your Account)
 
 * Provides governance,compliance and audit for your account.Its enabled by Default
 * Can get history of events/API calls made with AWS account
@@ -640,8 +640,11 @@ In case of EC2 instanses will not send any log files to cloudwatch logs .For thi
 ## VPC,SUBNET,INTERNET GATEWAY AND NAT GATEWAYS
 
 * VPC-VIRTUAL PRIVATE CLOUD-Its private network to deploy your resources.Eg:Ec2 instances a VPC is linked to a specific regions in AWS and you have multiple VPC.
-* SUBNET- It allows you to partition your network inside your VPC
+
+* SUBNET- It allows you to partition your network inside your VPC.Its a Range of IP addresses in your VPC
+
 * PUBLIC SUBNET- is a subnet that is accessible from the internet.
+
 * PRIVATE SUBNET-private subnet is a subnet that is not accessible from the internet.
 * To access internet between subnets use Route Tables
 
@@ -652,8 +655,204 @@ In case of EC2 instanses will not send any log files to cloudwatch logs .For thi
 
 ## NETWORK ACL AND SECURITY GROUP(SECURITY GROUP-EC2 INSTANCE LEVEL,NETWORK ACL-SUBNET LEVEL)
 
-* First line defense for our EC2 instance, is a NACL or network ACL, which is a Firewall that is controlling trafic from and to the Subnets
+* First line defense for our EC2 instance, is a NACL or network ACL, which is a Firewall that is controlling traffic from and to the Subnets
 >>It can allow and Deny Rules
 >>Rules only include IP address
+>>Its called Statefulness.
 * The Second line of Defence are Security Groups, and is a Firewall controls Traffic from to and from ENI(Elastic Network Interface)
 >>It can only allow rules
+>>Its Stateless
+
+## VPC FLOW LOGS 
+
+* VPC Flow logs are log of all the IP traffic going through your interfaces.
+1. VPC Flow logs 
+2. Subnet Flow Logs
+3. Elastic Network Interface Flow Log
+* By Enabling Flow logs we can monitor and troubleshoot for connectivity issues.
+
+## VPC PEERING
+
+* Connect two VPC,privately using AWS network (Eg: VPC A and VPC B)
+* Make sure that there IP addresses range do not overlap.
+
+## VPC ENDPOINTS
+
+* Using VPC Endpoints we connect to the services using AWS network instead of public internet network
+* This gives you enhanced security and Lower latency to access AWS service
+
+TYPES OF ENDPOINTS
+1. Gateway-S3 & DynamoDB
+2. Interface-for all other services
+
+## SITE TO SITE VPN & DIRECT CONNECT
+
+* Connect an on-permises VPN to AWS.It Goes over Public Internet. 
+* The connection is automatically encrypted.
+ON-PERMISES(must use a Customer Gateway-CGW)
+AWS(must use a Virtual private Gateway-VGW)
+
+DIRECT CONNECT(DX)
+
+* Establish physical connection between on-premises and AWS
+* The connection is private,secure and Fast 
+* Goes over a private network
+* Take a month to establish
+
+## TRANSIT GATEWAY
+
+* To have a Peering Connection between THOUSANDS of VPC and your on-premises system with hub and spoke star connection.
+* One Single gateway to provide this Functionality
+
+# SECURITY AND COMPLIANCE
+
+![CLOUD_PRACTITIONER](Shared_diagram.png)
+
+## DDOS* PROTECTION
+
+1. AWS SHIELD STANDARD-Protect against DDOS attack for your website and applications for all customers at no additional costs.
+2. AWS SHIELD ADVANCED-24/7 premium DDoS protection
+3. AWS WAF-(WEB APPLICATION FIREWALL)-Protects your web application from web exploits(layer 7-HTTP).Define WEB ACL
+
+## PENETRATION TESTING
+
+* AWS customers are welcome to carry out security assessments or penetration tests against their AWS infrastucture without prior approval for 8 services.
+
+## AWS KMS(Key Management Service)
+
+* If you hear Encryption in a service of AWS its likely to be KMS.Encryption Automatically enabled.For some services encryption is automatically enabled for some require encryption to be opted in
+
+* TYPES OF KMS KEYS
+
+>> CUSTOMER MANAGER CMK-You can create manage and use keys.
+>>AWS MANAGED CMK-Used nad managed by AWS
+>> CLOUD HSM(HARDWARE SECURITY MODULE)-Keys generated From your own CloudHSM hardware device
+
+## AWS SECRETS MANAGER
+
+* Newer service to store secrets.The secrets are going to encrypted using KMS
+
+## AWS ARTIFACT
+
+* Provides customer with on demand access to AWS Documentation and Agreement
+
+## AMAZON GUARDDUTY
+
+* Intelligent threat discovery to protect AWS Account and Uses Machine Learning algorithms.]
+
+## AMAZON INSPECTOR
+
+* Automated Security Assessments for EC2 instances  and analyse vulnerabilities and unintended network accessibility
+
+## AWS CONFIG
+
+* Helps to record configuration and changes over time
+
+## AMAZON MACIE
+
+* Macie in the instance, will be used to find the sensitive data in your S3 buckets,sensitive data such as personally identifiable information(PII)
+
+# MACHINE LEARNING
+
+1. REKOGNITION-Used for Face Detection,labeling,Celebrity recognition
+2. TRANSCRIBE-Audio to Text(ex:Subtitles)
+3. POLLY-Text to Audio
+4. TRANSLATE-language Translation(Help international users to translate large volumes of Text)
+5. AMAZON LEX-Amazon Lex Gives you AUTOMATIC SPEECH RCOGNITION(ASR).Helps you to bulid CHATBOTS and CALL CENTER BOTS
+6. AMAZON CONNECT-Whenever you want to connect our phonecall with our infrastructure we need to use Amazon Connect.
+7. COMPREHEND-Its for Natural Language Processing(NLP)
+8. AMAZON SAGEMAKER-Fully managed service for developers and Data scientists to build ML models.
+
+# ACCOUNT MANAGEMENT,BILLING & SUPPORT
+
+## AWS ORGANIZATIONS
+
+1. By Creating an organization you are able to manage multiple AWS accounts.The main account is going to be called Master Account and the other one is called Child    Account
+2. Single payment Methord for all accounts.
+
+## PRICING MODELS IN CLOUD 
+
+* Aws has 4 Pricing Models.
+  1. Pay as you go
+  2. Save When you reserve
+  3. Pay less by using more
+  4. Pay less as AWS grows
+* For EC2 you have minimum billing of 60 seconds and you want to pay per second for Linux and per hour for windows
+* LAMBDA(pay per call,pay per duration)
+* S3-(object size,number and  type of requests,S3 transfer acceleration,data transfer OUt of the S3 region)
+* RDS-per hour billing,database characteristic(engine,size,memory class),Purchase type(on-demand,reserved instances)
+
+## AWS TOTAL COST OF OWNERSHIP(TCO) CALCULATORS
+
+* Will provide reports that can used in Executive Presentation
+* We are going to compare the cost of running your applications and workloads on premises or in the traditional environment, compared to AWS on four categories,the    servers, the storage, the network,and the IT labor.
+
+## SUMMARY
+
+* Estimating costs in the Cloud
+1. TCO Calculator
+2. Simple monthly Calculator/Pricing Calculator
+* Tracking costs in the Cloud
+1. Billing Dashboard
+2. Cost Allocation Tags-To group together Resources
+3. Cost and Usage reports-will gave a detailed bill in CSV format
+4. Cost Explorer-Shows cost in graph and saving plan recommendations to save costs in future.
+
+## TRUSTED ADVISOR
+
+* Fully Trusted Advisory can available for Business & Enterprise support plans,cloudwatch Alarms
+* If you need high level account assessment from AWS to analyse your accounts and provide recommendations.It will analyze in five categories
+  1. Cost Optimization
+  2. Performance
+  3. Security
+  4. Fault Tolerance
+  5. service Limits
+
+## ADVANCED IDENTITY
+
+1. COGNITO-Its way to provide identity for your WEB and Mobile Application users.
+2. AWS DIRECTORY SERVICES:Create your own active directory service in AWS and manages User Locally.
+>> AD Connector-that will redirected to the on-premise Active Directory
+3. AWS SINGLE SIGN-ON (SSO)-Centrally managed Single Sign On to access multiple accounts and 3rd party business .So the idea here is that Single Sign-On allows you to 
+log in once and then be connected to a bunch of applications accounts without having to re-login.
+
+# AWS ARCHITECTING & ECOSYSTEM
+
+1. SCALABILITY-Vertical & Horizontal
+2. DISPOSABLE RESOURCES-Can easily Create and remove resources
+3. AUTOMATION- Serverless,Infrastructure as a service,Auto Scaling
+4. LOOSE COUPLING
+5. SERVICES NOT SERVERS
+
+## FIRST PILLAR(OPERATIONAL EXCELLENCE)
+
+PREPARE---OPERATE--EVOLVE
+
+* CLOUD FORMATION IS KEY TO OPERATIONAL EXCELLENCE
+* Ability to run and monitor systems to deliver business values and continously improve supporting process and  procedures 
+  >> Perform operations as code
+  >> Documents should be Annotated
+  >> Refine operations Frequently
+
+## SECOND PILLAR (SECURITY)
+
+* Ability to  protect information,system and assets while delivering business value through risk assesments and mitigation strategies
+![CLOUD_PRACTITIONER](pillar2_security.png)
+
+## THIRD PILLER (RELIABILITY)
+
+* Ability of a system to recover from infrastructure or service disruptions, dynamically acquire computing resources to meet demand and reduce misconfiguration or network issues
+
+![CLOUD_PRACTITIONER](Reliability.png)
+
+## FOURTH PILLER(PERFORMANCE EFFICIENCY)
+
+*  To use resources efficiently to meet system requirements and to maintain efficiency as demand changes and technologies evolve .Go global in minutes.
+
+![CLOUD_PRACTITIONER](performance_efficiancy.png)
+
+## FIFTH PILLER (COST OPTIMIZATION)
+
+* Includes ability to run system to deliver business value at the lowest price point
+
+![CLOUD_PRACTITIONER](cost_optimization.png)
