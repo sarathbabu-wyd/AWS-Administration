@@ -857,3 +857,6 @@ PREPARE---OPERATE--EVOLVE
 
 ![CLOUD_PRACTITIONER](cost_optimization.png)
 
+# AWS MARKETPLACE
+
+* The AWS Marketplace enables qualified partners to market and sell their software to AWS Customers. AWS Marketplace is an online software store that helps customers find, buy, and immediately start using the software and services that run on AWS.AWS Marketplace is designed for Independent Software Vendors (ISVs), Value-Added Resellers (VARs), and Systems Integrators (SIs) who have software products they want to offer to customers in the cloud. Partners use AWS Marketplace to be up and running in days and offer their software products to customers around the world.
