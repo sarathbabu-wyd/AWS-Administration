@@ -692,7 +692,7 @@ TYPES OF ENDPOINTS
 ON-PERMISES(must use a Customer Gateway-CGW)
 AWS(must use a Virtual private Gateway-VGW)
 
-DIRECT CONNECT(DX)
+## DIRECT CONNECT(DX)
 
 * Establish physical connection between on-premises and AWS
 * The connection is private,secure and Fast 
@@ -856,3 +856,4 @@ PREPARE---OPERATE--EVOLVE
 * Includes ability to run system to deliver business value at the lowest price point
 
 ![CLOUD_PRACTITIONER](cost_optimization.png)
+
